@@ -38,7 +38,7 @@ func (m *MemoryManager) SetMaxMemory(size string) bool {
 
 // IsFull 是否达到内存上限
 func (m *MemoryManager) IsFull() bool {
-	return m.memoryUsage > m.GetLimitSize()
+	return (m.memoryUsage - m.initMemoryUsage) > m.GetLimitSize()
 }
 
 // readMemStats 读取内存使用量
