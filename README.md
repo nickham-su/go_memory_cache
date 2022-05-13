@@ -16,4 +16,12 @@ fmt.Println(cache.Get("int"))      // <nil> false
 fmt.Println("keys:", cache.Keys()) // keys: 2
 cache.Flush()
 fmt.Println("keys:", cache.Keys()) // keys: 0
+
+// 设置过期时间
+cache.Set("int", 2, time.Second*2)
+fmt.Println(cache.Get("int"))      // 2 true
+fmt.Println("keys:", cache.Keys()) // keys: 1
+time.Sleep(time.Second * 3)
+fmt.Println(cache.Get("int"))      // <nil> false
+fmt.Println("keys:", cache.Keys()) // keys: 0
 ```
