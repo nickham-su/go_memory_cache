@@ -92,6 +92,7 @@ func (m *MemoryCache) Flush() bool {
 
 // Keys 返回所有的key的数量
 func (m *MemoryCache) Keys() int64 {
+	m.clearingExpired()
 	return m.storage.Keys()
 }
 
